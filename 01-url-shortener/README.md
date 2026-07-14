@@ -10,7 +10,7 @@ The service should have the following features:
 ## Requirements
 
 - The service should provide a RESTful API for creating and resolving shortened URLs.
-- Refer to the provided [OpenAPI specification](openapi.yml) (https://go.gov.sg/swe-ar-interview-question) for the API endpoints and request/response formats.
+- Refer to the provided [OpenAPI specification](openapi.yml) (https://go.gov.sg/swe-ar-interview-question) ([Swagger](https://editor.swagger.io/?url=https://raw.githubusercontent.com/gtmiccheng/interview-questions/refs/heads/main/01-url-shortener/openapi.yml)) for the API endpoints and request/response formats.
 - Data persistence can be in-memory for simplicity, but you may choose to use a database if you prefer.
 - Use any programming language and framework of your choice.
 - Automated tests are encouraged but not required.
