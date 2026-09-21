@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "name": "Frontend App",
+      "path": "todo-frontend"
+    },
+    {
+      "name": "Backend App",
+      "path": "todo-backend/todo-app-python"
+    },
+    {
+      "name": "End-to-End Tests",
+      "path": "e2e/py"
+    },
+    {
+      "path": "docs"
+    }
+  ]
+}

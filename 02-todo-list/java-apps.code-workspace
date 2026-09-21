@@ -1,0 +1,23 @@
+{
+  "folders": [
+    {
+      "name": "Frontend App",
+      "path": "todo-frontend"
+    },
+    {
+      "name": "Backend App",
+      "path": "todo-backend/todo-app-java"
+    },
+    {
+      "name": "End-to-End Tests",
+      "path": "e2e/java"
+    },
+    {
+      "path": "docs"
+    }
+  ],
+  "settings": {
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.configuration.updateBuildConfiguration": "interactive"
+  }
+}
