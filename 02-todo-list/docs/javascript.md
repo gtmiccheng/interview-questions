@@ -21,6 +21,15 @@ cd ./e2e/js
 npm run dev
 ```
 
+### Alternative way of running the To Do List app
+
+Use Docker to build and run the app in a Docker Container.
+
+```bash
+./build_docker.sh
+./run_docker.sh
+```
+
 ### To run the Playwright End-to-End Test
 
 In a separate Terminal window.
