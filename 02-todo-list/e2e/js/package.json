@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "dev":"concurrently -n \"FRONTEND,BACKEND\" -c \"cyan,green\" \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd ../../todo-frontend && npm run dev",
+    "dev:backend": "cd ../../todo-backend/todo-app-js && npm run dev",
     "e2e": "playwright test",
     "e2e-report": "playwright show-report --host 0.0.0.0"
   },
@@ -12,6 +15,7 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.47.2",
-    "@types/node": "^22.7.4"
+    "@types/node": "^22.7.4",
+    "concurrently": "^10.0.5"
   }
 }
