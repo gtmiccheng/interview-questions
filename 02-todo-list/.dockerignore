@@ -1,0 +1,4 @@
+docs
+e2e
+*.code-workspace
+node_modules
