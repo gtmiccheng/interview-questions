@@ -1,6 +1,6 @@
 # JavaScript Assignment
 
-## Pre-Requiistes
+## Setup
 
 ### Running the To Do List app
 
