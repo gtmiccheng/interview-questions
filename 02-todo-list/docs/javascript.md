@@ -2,7 +2,18 @@
 
 ## Pre-Requiistes
 
-### Install Dependencies
+### Running the To Do List app
+
+Use Docker to run the To Do List app.
+
+```bash
+docker run -p 3000:3000 -p 5173:5173 ghcr.io/gtmiccheng/todolist-app
+```
+
+<details>
+<summary>Alternative way of running the To Do List app</summary>
+
+#### Build and run the To Do List app locally
 
 ```bash
 cd todo-frontend
@@ -11,31 +22,20 @@ cd ../todo-backend/todo-app-js
 npm install
 cd ../../e2e/js
 npm install
-cd ../../
-```
-
-### To Start Test App
-
-```bash
-cd ./e2e/js
 npm run dev
 ```
+</details>
 
-### Alternative way of running the To Do List app
+### Application URLs
 
-Use Docker to build and run the app in a Docker Container.
-
-```bash
-./build_docker.sh
-./run_docker.sh
-```
+- Frontend Application: <http://localhost:5173>
+- Backend API: <http://localhost:3000>
 
 ### To run the Playwright End-to-End Test
 
-In a separate Terminal window.
+In a separate Terminal window, in the `./e2e/js` folder.
 
 ```bash
-cd ./e2e/js
 npm run e2e
 ```
 
