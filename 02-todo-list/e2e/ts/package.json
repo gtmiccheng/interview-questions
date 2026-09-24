@@ -1,9 +1,10 @@
 {
-  "name": "js",
+  "name": "ts",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"concurrently -n \"FRONTEND,BACKEND\" -c \"cyan,green\" \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev": "concurrently -n \"FRONTEND,BACKEND\" -c \"cyan,green\" \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "cd ../../todo-frontend && npm run dev",
     "dev:backend": "cd ../../todo-backend/todo-app-js && npm run dev",
     "e2e": "playwright test",
@@ -13,7 +14,7 @@
   "keywords": [],
   "author": "",
   "license": "MIT",
-  "description": "",
+  "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
