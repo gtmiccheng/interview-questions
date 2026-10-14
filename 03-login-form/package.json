@@ -1,0 +1,34 @@
+{
+  "name": "tdd-lab-login-form-nodejs-jest",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "start:watch": "nodemon --ext '*' --watch bin --watch public --watch routes --watch views --delay 2 --exec 'npm start'",
+    "test": "mocha",
+    "test:watch": "nodemon --ext '*' --delay 2 --exec 'npm test'",
+    "jsfmt": "eslint *.js routes/**/*.js test/**/*.js --fix",
+    "jslint": "eslint *.js routes/**/*.js test/**/*.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.5",
+    "express": "^4.22.3",
+    "express-session": "^1.17.1",
+    "http-errors": "~1.6.3",
+    "lokijs": "^1.5.11",
+    "morgan": "^1.12.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^10.12.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "mocha": "^12.0.3",
+    "nodemon": "^1.14.10",
+    "supertest": "^6.0.1"
+  }
+}
