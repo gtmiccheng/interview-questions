@@ -34,8 +34,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateUrlRequest'
             examples:
-              auto_slug:
-                summary: Auto-generated slug
+              auto_generated:
+                summary: Auto-generated short URL
                 value:
                   destination_url: "https://www.example.com/some/very/long/path?query=value"
       responses:
@@ -49,10 +49,8 @@ paths:
                 success:
                   summary: Successful creation
                   value:
-                    id: "a1b2c3d4"
                     short_url: "https://short.example.com/a1b2c3d4"
                     destination_url: "https://www.example.com/some/very/long/path?query=value"
-                    slug: "a1b2c3d4"
                     created_at: "2026-07-01T02:30:00Z"
         '400':
           description: Bad request — invalid or missing destination URL
@@ -66,20 +64,8 @@ paths:
                   value:
                     error: "VALIDATION_ERROR"
                     message: "destination_url is required and must be a valid URL."
-        '422':
-          description: Unprocessable entity — destination URL is syntactically valid but cannot be accepted (e.g. blocked domain)
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
 
-  /{slug}:
+  /{keyword}:
     get:
       servers:
         - url: http://localhost:3000
@@ -88,15 +74,15 @@ paths:
         - URLs
       summary: Redirect to destination URL
       description: >
-        Resolves the given slug and issues a 302 Found redirect to the
+        Resolves the given keyword and issues a 302 Found redirect to the
         original destination URL. This endpoint is served from the short
         domain (e.g. short.example.com) rather than the API subdomain.
       operationId: redirectToDestination
       parameters:
-        - name: slug
+        - name: keyword
           in: path
           required: true
-          description: The slug portion of the shortened URL.
+          description: The keyword portion of the shortened URL.
           schema:
             type: string
             example: a1b2c3d4
@@ -111,29 +97,17 @@ paths:
                 format: uri
                 example: "https://www.example.com/some/very/long/path?query=value"
         '404':
-          description: Slug not found — no shortened URL exists for this slug
+          description: Shortened URL does not exist
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
                 not_found:
-                  summary: Slug not found
+                  summary: Keyword not found
                   value:
                     error: "NOT_FOUND"
-                    message: "No shortened URL found for slug 'xyz99'."
-        '410':
-          description: Gone — the shortened URL existed but has been deleted or expired
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                    message: "No shortened URL found: 'xyz99'."
 
 components:
   schemas:
@@ -152,14 +126,6 @@ components:
     CreateUrlResponse:
       type: object
       properties:
-        id:
-          type: string
-          description: Unique internal identifier for the shortened URL record.
-          example: "a1b2c3d4"
-        slug:
-          type: string
-          description: The slug used in the shortened URL.
-          example: "a1b2c3d4"
         short_url:
           type: string
           format: uri
