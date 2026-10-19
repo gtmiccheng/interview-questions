@@ -65,7 +65,7 @@ paths:
                     error: "VALIDATION_ERROR"
                     message: "destination_url is required and must be a valid URL."
 
-  /{keyword}:
+  /{shortcode}:
     get:
       servers:
         - url: http://localhost:3000
@@ -74,15 +74,15 @@ paths:
         - URLs
       summary: Redirect to destination URL
       description: >
-        Resolves the given keyword and issues a 302 Found redirect to the
+        Resolves the given shortcode and issues a 302 Found redirect to the
         original destination URL. This endpoint is served from the short
         domain (e.g. short.example.com) rather than the API subdomain.
       operationId: redirectToDestination
       parameters:
-        - name: keyword
+        - name: shortcode
           in: path
           required: true
-          description: The keyword portion of the shortened URL.
+          description: The shortcode portion of the shortened URL.
           schema:
             type: string
             example: a1b2c3d4
@@ -104,7 +104,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
                 not_found:
-                  summary: Keyword not found
+                  summary: Shortcode not found
                   value:
                     error: "NOT_FOUND"
                     message: "No shortened URL found: 'xyz99'."

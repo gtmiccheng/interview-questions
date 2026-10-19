@@ -26,7 +26,7 @@ paths:
       summary: Create a shortened URL
       description: >
         Creates a new shortened URL for the given destination URL.
-        Optionally, a custom keyword can be provided. If no custom keyword is
+        Optionally, a custom shortcode can be provided. If no custom shortcode is
         supplied, one will be generated automatically.
       operationId: createShortUrl
       requestBody:
@@ -40,11 +40,11 @@ paths:
                 summary: Auto-generated short URL
                 value:
                   destination_url: "https://www.example.com/some/very/long/path?query=value"
-              custom_keyword:
-                summary: Custom keyword provided
+              custom_shortcode:
+                summary: Custom shortcode provided
                 value:
                   destination_url: "https://www.example.com/some/very/long/path?query=value"
-                  custom_keyword: "my-link"
+                  custom_shortcode: "my-link"
       responses:
         '201':
           description: Shortened URL created successfully
@@ -60,7 +60,7 @@ paths:
                     destination_url: "https://www.example.com/some/very/long/path?query=value"
                     created_at: "2026-07-01T02:30:00Z"
         '400':
-          description: Bad request — invalid or missing destination URL, or invalid custom keyword format
+          description: Bad request — invalid or missing destination URL, or invalid custom shortcode format
           content:
             application/json:
               schema:
@@ -71,25 +71,25 @@ paths:
                   value:
                     error: "VALIDATION_ERROR"
                     message: "destination_url is required and must be a valid URL."
-                invalid_keyword:
-                  summary: Invalid keyword format
+                invalid_shortcode:
+                  summary: Invalid shortcode format
                   value:
                     error: "VALIDATION_ERROR"
-                    message: "custom_keyword may only contain alphanumeric characters and hyphens (3-50 characters)."
+                    message: "custom_shortcode may only contain alphanumeric characters and hyphens (3-50 characters)."
         '409':
-          description: Conflict — the requested custom keyword is already in use
+          description: Conflict — the requested custom shortcode is already in use
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
-                keyword_taken:
-                  summary: Keyword already taken
+                shortcode_taken:
+                  summary: shortcode already taken
                   value:
-                    error: "KEYWORD_CONFLICT"
-                    message: "The custom keyword 'my-link' is already in use. Please choose a different keyword."
+                    error: "SHORTCODE_CONFLICT"
+                    message: "The custom shortcode 'my-link' is already in use. Please choose a different shortcode."
 
-  /{keyword}:
+  /{shortcode}:
     get:
       servers:
         - url: http://localhost:3000
@@ -98,15 +98,15 @@ paths:
         - URLs
       summary: Redirect to destination URL
       description: >
-        Resolves the given keyword and issues a 302 Found redirect to the
+        Resolves the given shortcode and issues a 302 Found redirect to the
         original destination URL. This endpoint is served from the short
         domain (e.g. short.example.com) rather than the API subdomain.
       operationId: redirectToDestination
       parameters:
-        - name: keyword
+        - name: shortcode
           in: path
           required: true
-          description: The keyword portion of the shortened URL (auto-generated or custom).
+          description: The shortcode portion of the shortened URL (auto-generated or custom).
           schema:
             type: string
             example: a1b2c3d4
@@ -121,14 +121,14 @@ paths:
                 format: uri
                 example: "https://www.example.com/some/very/long/path?query=value"
         '404':
-          description: Keyword not found — no shortened URL exists for this keyword
+          description: Shortcode not found — no shortened URL exists for this shortcode
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
               examples:
                 not_found:
-                  summary: Keyword not found
+                  summary: Shortcode not found
                   value:
                     error: "NOT_FOUND"
                     message: "No shortened URL found."
@@ -146,12 +146,12 @@ components:
           format: uri
           description: The full destination URL that the shortened link should redirect to.
           example: "https://www.example.com/some/very/long/path?query=value"
-        custom_keyword:
+        custom_shortcode:
           type: string
           description: >
-            Optional. A custom keyword to use for the shortened URL.
+            Optional. A custom shortcode to use for the shortened URL.
             Must be 3-50 characters and contain only alphanumeric characters
-            and hyphens. If omitted, a keyword will be auto-generated.
+            and hyphens. If omitted, a shortcode will be auto-generated.
           minLength: 3
           maxLength: 50
           pattern: '^[a-zA-Z0-9-]+$'
