@@ -4,14 +4,18 @@
 
 ### Running the To Do List app
 
+The webapp can be found here: <https://todolist-demo.app.tc1.airbase.sg/>
+
+<details>
+<summary>Alternative way of running the To Do List app</summary>
+
+### Docker Run
+
 Use Docker to run the To Do List app.
 
 ```bash
 docker run -p 3000:3000 -p 5173:5173 ghcr.io/gtmiccheng/todolist-app
 ```
-
-<details>
-<summary>Alternative way of running the To Do List app</summary>
 
 #### Build and run the To Do List app locally
 
