@@ -1,0 +1,5 @@
+{
+  "framework": "container",
+  "handle": "mddi-pdo/todolist-demo",
+  "port": 3000
+}

@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const ToDo = require("./models/todo");
 const cors = require("cors");
 
@@ -87,6 +88,10 @@ app.post('/todos/clear-completed', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+const distDir = process.env.FRONTEND_DIST || path.join(__dirname, "../../todo-frontend/dist");
+app.use(express.static(distDir));
+app.get("*", (req, res) => res.sendFile(path.join(distDir, "index.html")));
 
 // Start the server only when run directly
 if (require.main === module) {

@@ -30,8 +30,7 @@ import TodoItem from './components/TodoItem.vue';
 import TodoForm from './components/TodoForm.vue';
 import TodoActions from './components/TodoActions.vue';
 
-const viteApiHost = import.meta.env.VITE_API_HOST;
-const apiHost = viteApiHost && viteApiHost !== 'https://-3000.' ? viteApiHost : 'http://localhost:3000';
+const apiHost = import.meta.env.VITE_API_HOST || '';
 // const apiHost = 'https://legendary-garbanzo-q9prwq64xh66j7-3000.app.github.dev'
 
 export default {
