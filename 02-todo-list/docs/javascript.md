@@ -4,7 +4,7 @@
 
 ### Running the To Do List app
 
-The webapp can be found here: <https://todolist-demo.app.tc1.airbase.sg/>
+The To Do List app can be found here: <https://todolist-demo.app.tc1.airbase.sg/>
 
 <details>
 <summary>Alternative way of running the To Do List app</summary>
@@ -28,12 +28,13 @@ cd ../../e2e/js
 npm install
 npm run dev
 ```
-</details>
 
 ### Application URLs
 
 - Frontend Application: <http://localhost:5173>
 - Backend API: <http://localhost:3000>
+
+</details>
 
 ### To run the Playwright End-to-End Test
 

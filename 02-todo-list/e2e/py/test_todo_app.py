@@ -1,8 +1,8 @@
 from playwright.sync_api import expect
 import pytest
 
-testHost = 'http://localhost:5173'
-
+# testHost = 'http://localhost:5173'
+testHost = 'https://todolist-demo.app.tc1.airbase.sg/'
 
 def test_has_title(page):
     page.goto(testHost)

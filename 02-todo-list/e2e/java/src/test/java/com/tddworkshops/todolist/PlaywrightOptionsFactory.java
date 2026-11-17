@@ -9,6 +9,7 @@ public class PlaywrightOptionsFactory implements OptionsFactory {
   public Options getOptions() {
     return new Options()
         .setHeadless(true)
-        .setBaseUrl("http://localhost:5173");
+        // .setBaseUrl("http://localhost:5173");
+        .setBaseUrl("https://todolist-demo.app.tc1.airbase.sg");
   }
 }
